@@ -1,4 +1,4 @@
-#Bank Acoount Management System
+## Bank Acoount Management System
 
 ## Overview
 This is a simple Java application for managing bank accounts. It allows users to open different types of accounts (Savings, Salary, Current), perform transactions (deposit, withdraw), and display account details.
@@ -16,7 +16,7 @@ This is a simple Java application for managing bank accounts. It allows users to
   - Withdraw money
   - Display account transactions
 
-  - Automatic Account Number Generation:
+  - **Automatic Account Number Generation:**
   - Account numbers are automatically generated and incremented.
 
 ### Prerequisites
@@ -33,3 +33,5 @@ CurrentAccount.java: Implementation of the Current Account.
 SalaryAccount.java: Implementation of the Salary Account.
 AccountNumberGenerator.java: Class for generating auto-incremented account numbers.
 Main.java: Main class to run the application.
+
+If you find any issues with the programs, have suggestions for improvements, or want to contribute new programs, please feel free to open an issue or create a pull request. Your contributions are highly appreciated!
