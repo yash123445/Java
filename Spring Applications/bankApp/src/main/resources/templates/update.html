@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Account Information</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Account Information</h2>
+        <form th:action="@{'/' + ${actNo} + '/update'}" th:object="${account}" method="post">
+            <input type="hidden" th:field="*{actNo}" />
+
+            <label for="holderName">Username:</label>
+            <input type="text" id="holderName" th:field="*{holderName}" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required />
+
+            <label for="mobileNo">Mobile Number:</label>
+            <input type="tel" id="mobileNo" th:field="*{mobileNo}" required />
+            
+            <label for="aadharNo">Aadhar Number:</label>
+            <input type="tel" id="aadharNo" th:field="*{aadharNo}" required />
+
+            <button type="submit">Update</>
