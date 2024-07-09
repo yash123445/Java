@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">Edit Profile</h2>
+        <form th:action="@{/employees/edit/{id}(id=${employee.emp_id})}" th:object="${employee}" method="post">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="first_name">First Name</label>
+                    <input type="text" th:field="*{first_name}" class="form-control" id="first_name" placeholder="First Name" required>
+                </div>
+                <div class="form-group col">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" th:field="*{last_name}" class="form-control" id="last_name" placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="mobile_no">Mobile No</label>
+                    <input type="text" th:field="*{mobile_no}" class="form-control" id="mobile_no" placeholder="Mobile No" required>
+                </div>
+                <div class="form-group col">
+                    <label for="email_id">Email ID</label>
+                    <input type="email" th:field="*{email_id}" class="form-control" id="email_id" placeholder="Email ID" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="salary">Salary</label>
+                    <input type="number" th:field="*{salary}" class="form-control" id="salary" placeholder="Salary" required>
+                </div>
+                <div class="form-group col">
+                    <label for="joining_date">Joining Date</label>
+                    <input type="date" th:field="*{joining_Date}" class="form-control" id="joining_date" required>
+                </div>
+            </div>
+			<div class="form-row">
+			    <div class="form-group col">
+			        <label for="department">Department</label>
+			        <select th:field="*{dept_id}" class="form-control" id="department" required>
+			            <option th:each="dept : ${departments}" th:value="${dept.dept_id}" th:text="${dept.dept_name}">Department</option>
+			        </select>
+			    </div>
+			</div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea th:field="*{address}" class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
+</body>
+</html>
