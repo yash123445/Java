@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Profile</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">Profile</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>First Name</th>
+                <td th:text="${employee.first_name}"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td th:text="${employee.last_name}"></td>
+            </tr>
+            <tr>
+                <th>Mobile No</th>
+                <td th:text="${employee.mobile_no}"></td>
+            </tr>
+            <tr>
+                <th>Email ID</th>
+                <td th:text="${employee.email_id}"></td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td th:text="${employee.salary}"></td>
+            </tr>
+            <tr>
+                <th>Joining Date</th>
+                <td th:text="${employee.joining_Date}"></td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td th:text="${employee.dept_id.dept_name}"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td th:text="${employee.address}"></td>
+            </tr>
+        </table>
+        <a th:href="@{/employees/edit/{id}(id=${employee.emp_id})}" class="btn btn-primary">Edit Profile</a>
+    </div>
+</body>
+</html>
