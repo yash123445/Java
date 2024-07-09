@@ -5,14 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.*;
 import com.Interfaces.DepartmentRepository;
 import com.Interfaces.EmployeeRepository;
 import com.entities.Employee;
@@ -47,6 +40,36 @@ public class EmployeeController {
         return "redirect:/employees/employee";
     }
 
+    @GetMapping("/profile/{id}")
+    public String viewProfile(@PathVariable int id, Model model) {
+        Employee employee = employeeRepo.findById(id);
+        if (employee != null) {
+            model.addAttribute("employee", employee);
+            return "viewProfile";
+        } else {
+            return "error";
+        }
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editProfile(@PathVariable int id, Model model) {
+        Employee employee = employeeRepo.findById(id);
+        if (employee != null) {
+            model.addAttribute("employee", employee);
+            model.addAttribute("departments", departmentRepo.findAll());
+            return "editProfile";
+        } else {
+            return "error";
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateProfile(@PathVariable int id, @ModelAttribute("employee") Employee employee) {
+        employee.setEmp_id(id);
+        employeeRepo.save(employee);
+        return "redirect:/employees/profile/" + id;
+    }
+
     @DeleteMapping("/{emp_id}")
     @ResponseBody
     public String deleteEmployee(@PathVariable int emp_id) {
@@ -59,3 +82,4 @@ public class EmployeeController {
         }
     }
 }
+
