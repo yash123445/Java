@@ -39,11 +39,17 @@ public class Employee {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "skill1")
+    private String skill1;
+
+    @Column(name = "skill2")
+    private String skill2;
+
     public Employee() {
     }
 
     public Employee(int emp_id, String first_name, String last_name, String mobile_no, String email_id, long salary,
-            Date joining_Date, Department dept_id, String address) {
+            Date joining_Date, Department dept_id, String address, String skill1, String skill2) {
         super();
         this.emp_id = emp_id;
         this.first_name = first_name;
@@ -54,6 +60,8 @@ public class Employee {
         this.joining_Date = joining_Date;
         this.dept_id = dept_id;
         this.address = address;
+        this.skill1 = skill1;
+        this.skill2 = skill2;
     }
 
     public int getEmp_id() {
@@ -126,5 +134,21 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getSkill1() {
+        return skill1;
+    }
+
+    public void setSkill1(String skill1) {
+        this.skill1 = skill1;
+    }
+
+    public String getSkill2() {
+        return skill2;
+    }
+
+    public void setSkill2(String skill2) {
+        this.skill2 = skill2;
     }
 }
