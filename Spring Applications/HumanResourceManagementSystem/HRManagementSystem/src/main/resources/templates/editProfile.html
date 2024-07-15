@@ -38,15 +38,24 @@
                     <input type="date" th:field="*{joining_Date}" class="form-control" id="joining_date" required>
                 </div>
             </div>
-			<div class="form-row">
-			    <div class="form-group col">
-			        <label for="department">Department</label>
-			        <select th:field="*{dept_id}" class="form-control" id="department" required>
-			            <option th:each="dept : ${departments}" th:value="${dept.dept_id}" th:text="${dept.dept_name}">Department</option>
-			        </select>
-			    </div>
-			</div>
-
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="department">Department</label>
+                    <select th:field="*{dept_id}" class="form-control" id="department" required>
+                        <option th:each="dept : ${departments}" th:value="${dept.dept_id}" th:text="${dept.dept_name}">Department</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="skill1">Skill 1</label>
+                    <input type="text" th:field="*{skill1}" class="form-control" id="skill1" placeholder="Skill 1" required>
+                </div>
+                <div class="form-group col">
+                    <label for="skill2">Skill 2</label>
+                    <input type="text" th:field="*{skill2}" class="form-control" id="skill2" placeholder="Skill 2" required>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="address">Address</label>
                 <textarea th:field="*{address}" class="form-control" id="address" rows="3" required></textarea>
