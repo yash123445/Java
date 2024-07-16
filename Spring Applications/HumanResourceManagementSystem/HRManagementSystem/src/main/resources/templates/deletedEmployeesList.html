@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Deleted Employees List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">Deleted Employees List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Mobile No</th>
+                    <th>Email ID</th>
+                    <th>Salary</th>
+                    <th>Joining Date</th>
+                    <th>Deletion Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${deletedEmployees}">
+                    <td th:text="${employee.emp_id}"></td>
+                    <td th:text="${employee.first_name + ' ' + employee.last_name}"></td>
+                    <td th:text="${employee.mobile_no}"></td>
+                    <td th:text="${employee.email_id}"></td>
+                    <td th:text="${employee.salary}"></td>
+                    <td th:text="${employee.joining_Date}"></td>
+                    <td th:text="${employee.deletion_date}"></td>
+                    <td>
+                        <!-- Add any actions here, such as restoring employee -->
+                        <a th:href="@{/employees/restore/{id}(id=${employee.emp_id})}" class="btn btn-primary">Restore</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
