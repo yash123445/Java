@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appraisal Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Appraisal Form</h2>
+        
+        <!-- Form to submit appraisal details -->
+        <form th:action="@{/appraisals/save}" th:object="${appraisal}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            
+            <!-- Employee selection (assuming you have a list of employees) -->
+            <div class="form-group">
+                <label for="employee">Employee:</label>
+                <select id="employee" class="form-control" th:field="*{employee.emp_id}">
+                    <option th:each="emp : ${employees}" th:value="${emp.emp_id}" th:text="${emp.first_name} + ' ' + ${emp.last_name}"></option>
+                </select>
+            </div>
+            
+            <!-- Self Rating -->
+            <div class="form-group">
+                <label for="selfRating">Self Rating:</label>
+                <input type="text" id="selfRating" class="form-control" th:field="*{selfRating}"/>
+            </div>
+            
+            <!-- Self Remark -->
+            <div class="form-group">
+                <label for="selfRemark">Self Remark:</label>
+                <textarea id="selfRemark" class="form-control" th:field="*{selfRemark}"></textarea>
+            </div>
+            
+            <!-- Reviewer Rating -->
+            <div class="form-group">
+                <label for="reviewerRating">Reviewer Rating:</label>
+                <input type="text" id="reviewerRating" class="form-control" th:field="*{reviewerRating}"/>
+            </div>
+            
+            <!-- Reviewer Remarks -->
+            <div class="form-group">
+                <label for="reviewerRemarks">Reviewer Remarks:</label>
+                <textarea id="reviewerRemarks" class="form-control" th:field="*{reviewerRemarks}"></textarea>
+            </div>
+            
+            <!-- Is Submitted -->
+            <div class="form-check">
+                <input type="checkbox" id="isSubmitted" class="form-check-input" th:field="*{submitted}"/>
+                <label for="isSubmitted" class="form-check-label">Submitted</label>
+            </div>
+            
+            <!-- Appraisal Date -->
+            <div class="form-group">
+                <label for="appraisalDate">Appraisal Date:</label>
+                <input type="date" id="appraisalDate" class="form-control" th:field="*{appraisalDate}"/>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
