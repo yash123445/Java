@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appraisal List</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Appraisal List</h2>
+        <a href="/appraisals/form" class="btn btn-primary mb-3">Add New Appraisal</a>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Employee Name</th>
+                    <th>Self Rating</th>
+                    <th>Self Remark</th>
+                    <th>Reviewer Rating</th>
+                    <th>Reviewer Remarks</th>
+                    <th>Submitted</th>
+                    <th>Appraisal Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="appraisal : ${appraisals}">
+                    <td th:text="${appraisal.id}"></td>
+                    <td th:text="${appraisal.employee.first_name} + ' ' + ${appraisal.employee.last_name}"></td>
+                    <td th:text="${appraisal.selfRating}"></td>
+                    <td th:text="${appraisal.selfRemark}"></td>
+                    <td th:text="${appraisal.reviewerRating}"></td>
+                    <td th:text="${appraisal.reviewerRemarks}"></td>
+                    <td th:text="${appraisal.submitted ? 'Yes' : 'No'}"></td>
+                    <td th:text="${appraisal.appraisalDate}"></td>
+                    <td>
+                        <a th:href="@{/appraisals/edit/{id}(id=${appraisal.id})}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
